@@ -25,4 +25,8 @@ public class BookService {
                 .doOnNext(exists -> logger.info("Книга существует после удаления: {}", exists)) // Выводим результат проверки
                 .then();
     }
+
+    public Mono<Book> createBook(String name) {
+        return bookRepository.save(new Book(name));
+    }
 }
