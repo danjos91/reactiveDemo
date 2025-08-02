@@ -1,0 +1,8 @@
+spring:
+  r2dbc:
+    url: r2dbc:tc:mysql:///test?TC_DAEMON=true
+    username: test
+    password: test
+  sql:
+    init:
+      mode: always 
