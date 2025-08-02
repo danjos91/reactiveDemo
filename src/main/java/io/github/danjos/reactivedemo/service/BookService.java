@@ -5,7 +5,9 @@ import io.github.danjos.reactivedemo.repository.BookRepository;
 import reactor.core.publisher.Mono;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
+@Service
 public class BookService {
 
     private final BookRepository bookRepository;
