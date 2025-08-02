@@ -1,21 +1,34 @@
 spring:
-  application:
-    name: reactiveDemo
-  r2dbc:
-    url: r2dbc:h2:mem:///reactive_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
-    username: sa
-    password: ""
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
-      settings:
-        trace: false
-        web-allow-others: false
+  ## Не указывается
+  #  r2dbc:
+  #    url: r2dbc:mysql://db-address:3306/test # URL подключения к БД
+  #    username: test # имя пользователя
+  #    password: test # пароль
   sql:
     init:
-      mode: always
+      mode: always # для инициализации схемы с использованием schema.sql
 logging:
   level:
-    org.springframework.r2dbc.core.DefaultDatabaseClient: DEBUG # заодно включим логирование SQL-запросов
-    io.r2dbc: DEBUG # и добавим больше деталей (не включать в настоящем приложении)
+    io.asyncer.r2dbc.mysql: DEBUG # в этот раз будем логировать запросы напрямую из r2dbc-драйвера
+#spring:
+#  application:
+#    name: reactiveDemo
+#  r2dbc:
+#    url: r2dbc:h2:mem:///reactive_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+#    username: sa
+#    password: ""
+#  h2:
+#    console:
+#      enabled: true
+#      path: /h2-console
+#      settings:
+#        trace: false
+#        web-allow-others: false
+#  sql:
+#    init:
+#      mode: always
+#logging:
+#  level:
+#    org.springframework.r2dbc.core.DefaultDatabaseClient: DEBUG # заодно включим логирование SQL-запросов
+#    io.r2dbc: DEBUG # и добавим больше деталей (не включать в настоящем приложении)
+

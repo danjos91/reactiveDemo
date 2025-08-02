@@ -2,6 +2,7 @@ package io.github.danjos.reactivedemo.service;
 
 import io.github.danjos.reactivedemo.model.Book;
 import io.github.danjos.reactivedemo.repository.BookRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,5 +79,17 @@ class BookServiceIntegrationTest {
         StepVerifier.create(bookRepository.count())
                 .expectNext(0L)
                 .verifyComplete();
+    }
+
+    @Test
+    public void testCreateBook() {
+        bookService.createBook("Реактивное программирование в Java")
+                .doOnNext(book -> Assertions.assertThat(book)
+                        .withFailMessage("Результат сохранения не должен быть пустым")
+                        .isNotNull()
+                        .withFailMessage("Сохранённой книге должен быть присвоен ID")
+                        .extracting(Book::getId)
+                        .isNotNull()
+                ).block(); // блокируемся на тестовом потоке до завершения реактивной цепочки
     }
 }
