@@ -2,7 +2,7 @@ spring:
   application:
     name: reactiveDemo
   r2dbc:
-    url: r2dbc:h2:mem:///shopdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
+    url: r2dbc:h2:mem:///reactive_test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
     username: sa
     password: ""
   h2:
@@ -15,3 +15,7 @@ spring:
   sql:
     init:
       mode: always
+logging:
+  level:
+    org.springframework.r2dbc.core.DefaultDatabaseClient: DEBUG # заодно включим логирование SQL-запросов
+    io.r2dbc: DEBUG # и добавим больше деталей (не включать в настоящем приложении)
