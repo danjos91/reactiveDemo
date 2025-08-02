@@ -1,6 +1,8 @@
-import lombok.Data;
+package io.github.danjos.reactivedemo.model;
 
-@Entity
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+
 @Data
 public class Book {
     @Id
